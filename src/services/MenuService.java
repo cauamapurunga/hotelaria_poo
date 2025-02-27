@@ -1,4 +1,4 @@
-package Services;
+package services;
 
 import models.*;
 import models.Abstracts.*;
@@ -340,8 +340,9 @@ public class MenuService {
             }
         }
         if (reservaParaRemover != null) {
+            reservaParaRemover.getQuarto().setDisponivel(true);
             reservas.remove(reservaParaRemover);
-            System.out.println("Reserva removida.");
+            System.out.println("Reserva removida. Quarto " + numeroQuarto + " agora está disponível.");
         } else {
             System.out.println("Reserva não encontrada.");
         }
@@ -416,9 +417,9 @@ public class MenuService {
                     Cliente cliente = buscarCliente(documentoCliente);
                     Quarto quarto = buscarQuartoPorNumero(numeroQuarto);
 
-                    Reserva reserva = new Reserva(quarto, cliente);
+                    // Agora chamamos o construtor ESPECIAL que ignora disponibilidade
+                    Reserva reserva = new Reserva(quarto, cliente, true);
                     reservas.add(reserva);
-                    quarto.setDisponivel(false);
                 }
             }
 

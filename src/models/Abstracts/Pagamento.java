@@ -1,10 +1,10 @@
-    package models.Abstracts;
+        package models.Abstracts;
 
-    public abstract class Pagamento {
-        public abstract boolean processarPagamento(double valor);
+        public abstract class Pagamento {
+            public abstract boolean processarPagamento(double valor);
 
-        @Override
-        public String toString() {
-            return "Pagamento{}";
+            @Override
+            public String toString() {
+                return "Pagamento{}";
+            }
         }
-    }

@@ -1,3 +1,3 @@
 101;Simples;true
 102;Simples;true
-103;Luxo;true
+103;Luxo;false

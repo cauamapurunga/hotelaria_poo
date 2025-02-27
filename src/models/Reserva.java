@@ -9,10 +9,17 @@ public class Reserva extends Transacao implements Pagavel {
     private final Quarto quarto;
     private final Cliente cliente;
 
+    // Construtor "normal" - usado para criar reservas novas
     public Reserva(Quarto quarto, Cliente cliente) throws QuartoIndisponivelException {
         if (!quarto.isDisponivel()) {
             throw new QuartoIndisponivelException("O quarto " + quarto.getNumero() + " está indisponível para reserva.");
         }
+        this.quarto = quarto;
+        this.cliente = cliente;
+        quarto.setDisponivel(false);
+    }
+
+    public Reserva(Quarto quarto, Cliente cliente, boolean ignorarDisponibilidade) {
         this.quarto = quarto;
         this.cliente = cliente;
         quarto.setDisponivel(false);
@@ -26,21 +33,8 @@ public class Reserva extends Transacao implements Pagavel {
         return cliente;
     }
 
-    public void detalharReserva() {
-        System.out.println("Quarto: " + quarto.getNumero());
-    }
-
-    public void detalharReserva(boolean incluirCliente) {
-        System.out.println("Quarto: " + quarto.getNumero());
-        if (incluirCliente) {
-            System.out.println("Cliente: " + cliente.getNome());
-        }
-    }
-
     @Override
-    public void pagar() throws Exception {
-
-    }
+    public void pagar() throws Exception { }
 
     @Override
     public void executar() {
